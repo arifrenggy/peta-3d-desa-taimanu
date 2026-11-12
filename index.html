@@ -118,6 +118,111 @@
     .tombol{font-size:11px; padding:7px 9px}
     #info{bottom:10px}
   }
+
+  /* ------- pemilih mode ------- */
+  #modeBar{
+    position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:13; display:flex; gap:4px;
+    background:#fffdf6; border:3px solid var(--ink); border-radius:99px; padding:4px;
+    box-shadow:0 5px 0 rgba(0,0,0,.12);
+  }
+  #modeBar.sembunyi{display:none}
+  #modeBar button{
+    font-family:"Baloo 2",sans-serif; font-size:14px; cursor:pointer; border:none; border-radius:99px;
+    padding:8px 16px; background:transparent; color:var(--soft); display:flex; align-items:center; gap:7px;
+  }
+  #modeBar button.aktif{background:var(--ink); color:#fffdf6}
+  #modeBar svg{flex:none}
+
+  /* ------- panel mode uji ------- */
+  #panelUji{
+    position:fixed; left:50%; bottom:16px; transform:translateX(-50%) translateY(14px); z-index:16;
+    width:min(660px,calc(100vw - 28px)); max-height:66vh; overflow:auto; opacity:0; pointer-events:none;
+    background:#fffdf6; border:3.5px solid var(--ink); border-radius:22px; padding:15px 18px 17px;
+    box-shadow:0 12px 0 rgba(0,0,0,.18); transition:opacity .18s ease, transform .18s ease;
+  }
+  #panelUji.tampil{opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto}
+  #panelUji.lebar{max-height:84vh}
+  #ujiAtas{display:flex; align-items:center; gap:10px; margin-bottom:9px}
+  #ujiAtas .nomor{font-family:"Baloo 2",sans-serif; font-size:13px; color:var(--muted)}
+  #ujiAtas .barUji{flex:1; height:9px; border-radius:99px; background:#efeade; overflow:hidden}
+  #ujiAtas .barUji i{display:block; height:100%; width:0; background:var(--grape); transition:width .25s}
+  #ujiBatal{
+    font-family:"Nunito",sans-serif; font-weight:800; font-size:12px; border:2.5px solid var(--line);
+    background:#fff; color:var(--muted); border-radius:99px; padding:5px 11px; cursor:pointer; flex:none;
+  }
+  #panelUji h2{margin:0 0 12px; font-family:"Baloo 2",sans-serif; font-size:21px; line-height:1.22; color:var(--ink)}
+  #panelUji .ket{font-size:13.5px; line-height:1.45; color:var(--soft); margin:0 0 12px}
+  #ujiOpsi{display:grid; gap:8px}
+  #ujiOpsi.petak{grid-template-columns:1fr 1fr}
+  #ujiOpsi button{
+    font-family:"Nunito",sans-serif; font-weight:800; font-size:15px; text-align:left; cursor:pointer;
+    padding:11px 13px; border-radius:14px; border:2.5px solid var(--line); background:#fff; color:var(--soft);
+    display:flex; align-items:center; gap:10px; transition:transform .12s, border-color .2s, background .2s;
+  }
+  #ujiOpsi button:hover{border-color:var(--grape); background:#f7f4ff; transform:translateY(-1px)}
+  #ujiOpsi button:disabled{cursor:default; opacity:.75}
+  #ujiOpsi .huruf{
+    width:24px; height:24px; border-radius:50%; background:#f1eee3; color:var(--muted); flex:none;
+    font-family:"Baloo 2",sans-serif; font-size:13px; display:grid; place-items:center;
+  }
+  #ujiOpsi button.dipilih{border-color:var(--grape); background:#f2edff; color:var(--grape-d)}
+  #ujiOpsi button.dipilih .huruf{background:var(--grape); color:#fff}
+  #ujiNama{display:flex; gap:8px; margin-bottom:12px}
+  #ujiNama input{
+    flex:1; font-family:"Nunito",sans-serif; font-weight:700; font-size:15px; padding:10px 13px;
+    border:2.5px solid var(--line); border-radius:13px; background:#fff; color:var(--soft);
+  }
+  #ujiNama input:focus{outline:none; border-color:var(--grape)}
+  #ujiMulai{
+    font-family:"Baloo 2",sans-serif; font-size:17px; cursor:pointer; border:none; border-radius:14px;
+    padding:12px 20px; background:var(--grape); color:#fff; box-shadow:0 5px 0 var(--grape-d); width:100%;
+  }
+  #ujiMulai:active{transform:translateY(3px); box-shadow:none}
+  #ujiDaftarNama{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
+  #ujiDaftarNama button{
+    font-family:"Baloo 2",sans-serif; font-size:13px; cursor:pointer; background:#fff; border:2.5px solid var(--line);
+    color:var(--soft); border-radius:99px; padding:7px 12px;
+  }
+  #ujiDaftarNama button:hover{border-color:var(--grape); color:var(--grape-d)}
+
+  /* ------- hasil uji ------- */
+  #ujiHasil{text-align:center}
+  #ujiHasil .nilai{font-family:"Baloo 2",sans-serif; font-size:52px; line-height:1; color:var(--grape-d); margin:4px 0 2px}
+  #ujiHasil .dari{font-size:13px; font-weight:800; color:var(--muted)}
+  #ujiHasil .predikat{
+    display:inline-block; margin:9px 0 4px; padding:5px 15px; border-radius:99px; font-family:"Baloo 2",sans-serif;
+    font-size:14px; background:#f2edff; color:var(--grape-d);
+  }
+  #ujiHasil .bintang{display:flex; justify-content:center; gap:7px; margin:10px 0 12px}
+  #ujiHasil .bintang svg{opacity:.2} #ujiHasil .bintang svg.nyala{opacity:1}
+  #rincian{text-align:left; margin-top:6px; border-top:2.5px solid var(--line); padding-top:10px}
+  #rincian .baris{display:flex; gap:9px; padding:7px 0; border-bottom:1px dashed var(--line); font-size:13px; line-height:1.4}
+  #rincian .baris:last-child{border-bottom:none}
+  #rincian .tanda{width:20px; height:20px; border-radius:50%; flex:none; display:grid; place-items:center; color:#fff; font-size:12px; font-weight:900}
+  #rincian .baris.benar .tanda{background:var(--grass)} #rincian .baris.salah .tanda{background:var(--coral)}
+  #rincian .isi b{color:var(--ink)}
+  #rincian .isi span{display:block; color:var(--muted); font-size:12px}
+  #ujiAksi{display:grid; gap:8px; margin-top:14px}
+  #ujiAksi button{font-family:"Baloo 2",sans-serif; font-size:16px; cursor:pointer; border:none; border-radius:14px; padding:12px; color:#fff}
+  #ujiUlang{background:var(--grape); box-shadow:0 5px 0 var(--grape-d)}
+  #ujiTutup{background:var(--sky); box-shadow:0 5px 0 var(--sky-d)}
+  #ujiSalin{background:#fff; color:var(--soft); border:2.5px solid var(--line) !important; box-shadow:0 4px 0 rgba(0,0,0,.08)}
+
+  #toastUji{
+    position:fixed; left:50%; top:50%; transform:translate(-50%,-50%) scale(.9); z-index:30;
+    background:var(--ink); color:#fffdf6; font-family:"Baloo 2",sans-serif; font-size:15px;
+    padding:10px 18px; border-radius:99px; opacity:0; pointer-events:none; transition:opacity .15s, transform .15s;
+  }
+  #toastUji.tampil{opacity:1; transform:translate(-50%,-50%) scale(1)}
+
+  @media (max-width:820px){
+    #modeBar{top:auto; bottom:56px; padding:3px}
+    #modeBar button{font-size:12.5px; padding:7px 12px}
+    #panelUji{max-height:58vh; padding:12px 14px 14px}
+    #panelUji h2{font-size:18px}
+    #ujiOpsi.petak{grid-template-columns:1fr}
+    #ujiHasil .nilai{font-size:44px}
+  }
 </style>
 </head>
 <body>
@@ -174,6 +279,21 @@
 </div>
 
 <div id="petunjuk">Geser untuk memutar peta &middot; scroll atau cubit untuk memperbesar &middot; klik benda untuk keterangan</div>
+
+
+<div id="modeBar">
+  <button class="aktif" data-mode="jelajah" type="button">
+    <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7.5"/><path d="M10 2.5v15M2.5 10h15"/></svg>
+    Jelajah peta
+  </button>
+  <button data-mode="uji" type="button">
+    <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h10a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M7 7h6M7 11h6M7 15h3"/></svg>
+    Uji kemampuan
+  </button>
+</div>
+
+<div id="panelUji" role="dialog" aria-live="polite"></div>
+<div id="toastUji" aria-hidden="true"></div>
 
 <div id="info" role="dialog" aria-live="polite">
   <div class="atas">
@@ -650,9 +770,12 @@ console.warn( 'Scripts "build/three.js" and "build/three.min.js" are deprecated 
     var hasil = ray.intersectObjects([adegan], true);
     for(var i=0;i<hasil.length;i++){
       var id = hasil[i].object.userData && hasil[i].object.userData.tempat;
-      if(id){ bukaInfo(id); return; }
+      if(id){
+        if(modeUji === 'uji' && uji.aktif){ jawabKlikUji(id); } else { bukaInfo(id); }
+        return;
+      }
     }
-    tutupInfo();
+    if(!(modeUji === 'uji' && uji.aktif)) tutupInfo();
   }
 
   /* =====================================================
@@ -740,11 +863,319 @@ console.warn( 'Scripts "build/three.js" and "build/three.min.js" are deprecated 
     window.addEventListener('keydown', function(e){
       if(e.key === 'Escape') tutupInfo();
     });
+    Array.prototype.forEach.call(document.querySelectorAll('#modeBar button'), function(b){
+      b.addEventListener('click', function(){
+        if(uji.aktif && !uji.selesai && b.dataset.mode !== 'uji'){
+          if(!window.confirm('Keluar dari uji? Jawaban yang sudah diisi akan hilang.')) return;
+        }
+        pindahMode(b.dataset.mode);
+      });
+    });
   }
 
   /* =====================================================
      MULAI
      ===================================================== */
+
+  /* =====================================================
+     MODE UJI KEMAMPUAN
+     ===================================================== */
+  var modeUji = 'jelajah';
+  var uji = {aktif:false, soal:[], ke:0, jawaban:[], nama:'', selesai:false};
+  var JUMLAH_UJI = 15;
+
+  var BANK = [
+    {t:'pg', q:'Peta yang isinya hanya satu hal, misalnya curah hujan, disebut peta...',
+     o:['Peta tematik','Peta umum','Peta timbul','Peta dunia'], b:0,
+     ket:'Peta tematik hanya menunjukkan satu hal saja.'},
+    {t:'pg', q:'Peta yang permukaannya bisa diraba karena gunungnya menonjol disebut peta...',
+     o:['Peta timbul','Peta datar','Peta digital','Peta tematik'], b:0,
+     ket:'Peta timbul dibuat tiga dimensi sehingga bisa diraba.'},
+    {t:'pg', q:'Keterangan arti semua simbol pada peta terdapat pada...',
+     o:['Legenda','Judul peta','Garis tepi','Skala'], b:0,
+     ket:'Legenda adalah kamus kecil peta.'},
+    {t:'pg', q:'Peta kecil yang ada di pojok peta besar disebut...',
+     o:['Inset','Legenda','Simbol','Skala'], b:0,
+     ket:'Inset menunjukkan letak daerah pada peta yang lebih luas.'},
+    {t:'pg', q:'Skala peta 1 cm = 100 m. Jarak 4 cm di peta berarti ... meter.',
+     o:['400 meter','40 meter','4.000 meter','140 meter'], b:0,
+     ket:'4 dikali 100 sama dengan 400 meter.'},
+    {t:'pg', q:'Skala peta 1 cm = 1 km. Jarak 7 cm di peta berarti ... km.',
+     o:['7 km','70 km','700 m','1 km'], b:0,
+     ket:'7 dikali 1 km sama dengan 7 km.'},
+    {t:'pg', q:'Arah antara utara dan barat disebut...',
+     o:['Barat laut','Timur laut','Tenggara','Barat daya'], b:0,
+     ket:'Antara utara dan barat namanya barat laut.'},
+    {t:'pg', q:'Pada peta, arah timur biasanya digambar di bagian...',
+     o:['Kanan','Kiri','Atas','Bawah'], b:0,
+     ket:'Kalau utara di atas, maka timur di kanan.'},
+    {t:'pg', q:'Gambar mata angin pada peta berguna untuk...',
+     o:['Menunjukkan arah','Menghitung luas','Menghias peta','Menulis nama desa'], b:0,
+     ket:'Mata angin menunjukkan arah utara, timur, selatan, dan barat.'},
+    {t:'pg', q:'Judul peta berguna untuk...',
+     o:['Mengetahui isi peta','Menghitung jarak','Menunjukkan arah','Menutupi gambar'], b:0,
+     ket:'Judul memberi tahu peta itu tentang apa.'},
+    {t:'pg', q:'Saat menggambar denah kelas, yang paling dulu digambar adalah...',
+     o:['Batas ruangan atau dinding','Hiasan dinding','Nama teman','Warna meja'], b:0,
+     ket:'Mulai dari batas ruangan, lalu pintu, meja, dan kursi.'},
+    {t:'bs', q:'Denah dan peta itu sama saja, tidak ada bedanya.', b:false,
+     ket:'Salah. Denah lebih sederhana dan biasanya untuk ruangan atau sekolah.'},
+    {t:'bs', q:'Setiap peta boleh memakai simbol berbeda, jadi legenda penting sekali.', b:true,
+     ket:'Benar. Karena simbol bisa berbeda, legenda wajib ada.'},
+    {t:'bs', q:'Peta digital harus dilipat seperti peta kertas.', b:false,
+     ket:'Salah. Peta digital ada di layar, tidak perlu dilipat.'},
+    {t:'bs', q:'Skala membandingkan jarak di peta dengan jarak sebenarnya.', b:true,
+     ket:'Benar. Itulah gunanya skala.'},
+    {t:'klik', q:'Klik gunung di peta!', target:'gunung',
+     ket:'Gunung ada di utara, digambar sebagai segitiga coklat.'},
+    {t:'klik', q:'Klik pasar di peta!', target:'pasar',
+     ket:'Pasar ada di timur desa, di seberang sungai.'},
+    {t:'klik', q:'Klik danau di peta!', target:'danau',
+     ket:'Danau ada di barat desa, berupa bidang biru.'},
+    {t:'klik', q:'Klik lapangan di peta!', target:'lapangan',
+     ket:'Lapangan bola ada di selatan desa.'},
+    {t:'gambar', q:'Simbol segitiga coklat ini artinya...',
+     o:[{svg:'gunung', teks:'Gunung'},{svg:'sungai', teks:'Sungai'},{svg:'hutan', teks:'Hutan'},{svg:'danau', teks:'Danau'}], b:0,
+     ket:'Segitiga coklat adalah simbol gunung.'}
+  ];
+
+  function acakUrut(daftar){
+    var a = daftar.slice();
+    for(var i=a.length-1;i>0;i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function teksJawaban(soal, nilai){
+    if(nilai === null || nilai === undefined) return '(tidak dijawab)';
+    if(soal.t === 'bs') return nilai ? 'Benar' : 'Salah';
+    if(soal.t === 'klik'){
+      var nama = nilai;
+      TEMPAT.forEach(function(t){ if(t.id === nilai) nama = t.nama; });
+      return nama;
+    }
+    if(soal.t === 'gambar') return soal.o[nilai] ? soal.o[nilai].teks : String(nilai);
+    return soal.o[nilai] !== undefined ? soal.o[nilai] : String(nilai);
+  }
+
+  function kunciSoal(soal){
+    if(soal.t === 'klik') return soal.target;
+    if(soal.t === 'bs') return soal.b ? 0 : 1;
+    return soal.b;
+  }
+
+  function pindahMode(m){
+    modeUji = m;
+    Array.prototype.forEach.call(document.querySelectorAll('#modeBar button'), function(b){
+      b.classList.toggle('aktif', b.dataset.mode === m);
+    });
+    if(m === 'jelajah'){
+      uji.aktif = false;
+      el('panelUji').classList.remove('tampil', 'lebar');
+      tutupInfo();
+      el('petunjuk').textContent = 'Geser untuk memutar peta · scroll atau cubit untuk memperbesar · klik benda untuk keterangan';
+    }else{
+      tutupInfo();
+      el('panelUji').classList.add('tampil');
+      tampilkanMulaiUji();
+    }
+  }
+
+  function tampilkanMulaiUji(){
+    uji = {aktif:false, soal:[], ke:0, jawaban:[], nama:uji.nama || '', selesai:false};
+    var panel = el('panelUji');
+    panel.classList.add('tampil');
+    panel.classList.remove('lebar');
+    panel.innerHTML =
+      '<div id="ujiAtas"><span class="nomor">Uji kemampuan</span><div class="barUji"><i></i></div></div>' +
+      '<h2>Uji Kemampuan Peta</h2>' +
+      '<p class="ket">Ada ' + JUMLAH_UJI + ' soal campuran: pilihan ganda, benar atau salah, pilih simbol, dan klik benda di peta 3D. ' +
+      'Jawaban tidak langsung dinilai, jadi kerjakan dengan tenang. Nilai dan rincian jawaban muncul di akhir.</p>' +
+      '<div id="ujiNama"><input id="isianNama" type="text" placeholder="Nama siswa (boleh dikosongkan)" maxlength="40" value="' + (uji.nama || '').replace(/"/g, '&quot;') + '"></div>' +
+      '<button id="ujiMulai" type="button">Mulai uji (' + JUMLAH_UJI + ' soal)</button>';
+    el('ujiMulai').addEventListener('click', function(){
+      var isian = el('isianNama');
+      mulaiUji(isian ? isian.value.trim() : '');
+    });
+    var isian = el('isianNama');
+    if(isian) isian.addEventListener('keydown', function(e){ if(e.key === 'Enter') el('ujiMulai').click(); });
+  }
+
+  function mulaiUji(nama){
+    uji.aktif = true;
+    uji.nama = nama || '';
+    uji.ke = 0;
+    uji.jawaban = [];
+    uji.selesai = false;
+    uji.soal = acakUrut(BANK).slice(0, JUMLAH_UJI);
+    el('panelUji').classList.remove('lebar');
+    tampilkanSoalUji();
+  }
+
+  function tampilkanSoalUji(){
+    var panel = el('panelUji');
+    var soal = uji.soal[uji.ke];
+    if(!soal){ tampilkanHasilUji(); return; }
+    var nomor = 'Soal ' + (uji.ke + 1) + ' dari ' + uji.soal.length;
+    var kepala =
+      '<div id="ujiAtas"><span class="nomor">' + nomor + '</span>' +
+      '<div class="barUji"><i style="width:' + ((uji.ke / uji.soal.length) * 100).toFixed(1) + '%"></i></div>' +
+      '<button id="ujiBatal" type="button">Keluar</button></div>';
+    var isi = kepala + '<h2>' + soal.q + '</h2>';
+
+    if(soal.t === 'klik'){
+      isi += '<p class="ket">Klik benda yang diminta langsung di peta 3D (peta di atas masih bisa diputar). Kalau sulit, pakai daftar nama di bawah.</p>';
+      isi += '<div id="ujiDaftarNama"></div>';
+    }else if(soal.t === 'bs'){
+      isi += '<div id="ujiOpsi"></div>';
+    }else if(soal.t === 'gambar'){
+      isi += '<div id="ujiOpsi" class="petak"></div>';
+    }else{
+      isi += '<div id="ujiOpsi"></div>';
+    }
+    panel.innerHTML = isi;
+
+    el('ujiBatal').addEventListener('click', function(){
+      if(window.confirm('Keluar dari uji? Jawaban yang sudah diisi akan hilang.')) pindahMode('jelajah');
+    });
+
+    if(soal.t === 'klik'){
+      var wadah = el('ujiDaftarNama');
+      TEMPAT.forEach(function(t){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.dataset.tempat = t.id;
+        b.textContent = t.nama;
+        b.addEventListener('click', function(){ jawabKlikUji(t.id); });
+        wadah.appendChild(b);
+      });
+      return;
+    }
+
+    var opsi = el('ujiOpsi');
+    if(soal.t === 'bs'){
+      ['Benar','Salah'].forEach(function(teks, i){
+        buatTombolUji(opsi, teks, i, String.fromCharCode(65 + i), null);
+      });
+    }else if(soal.t === 'gambar'){
+      soal.o.forEach(function(o2, i){
+        buatTombolUji(opsi, o2.teks, i, String.fromCharCode(65 + i), ikonSvg(o2.svg, 24));
+      });
+    }else{
+      soal.o.forEach(function(teks, i){
+        buatTombolUji(opsi, teks, i, String.fromCharCode(65 + i), null);
+      });
+    }
+  }
+
+  function buatTombolUji(wadah, teks, nilai, huruf, svgHtml){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.dataset.nilai = nilai;
+    b.innerHTML = '<span class="huruf">' + huruf + '</span>' + (svgHtml || '') + '<span>' + teks + '</span>';
+    b.addEventListener('click', function(){ jawabUji(nilai); });
+    wadah.appendChild(b);
+  }
+
+  function catatJawaban(nilai){
+    uji.jawaban[uji.ke] = nilai;
+    uji.ke++;
+    if(uji.ke >= uji.soal.length) tampilkanHasilUji();
+    else tampilkanSoalUji();
+  }
+
+  function jawabUji(nilai){
+    if(!uji.aktif || uji.selesai) return;
+    var tombol = el('ujiOpsi') ? el('ujiOpsi').querySelector('button[data-nilai="' + nilai + '"]') : null;
+    if(tombol){ tombol.classList.add('dipilih'); tombol.disabled = true; }
+    var soal = uji.soal[uji.ke];
+    if(soal && soal.t === 'klik'){
+      toastUji('Jawaban: ' + teksJawaban(soal, nilai));
+    }
+    setTimeout(function(){ catatJawaban(nilai); }, 220);
+  }
+
+  function jawabKlikUji(idTempat){
+    if(!uji.aktif || uji.selesai) return;
+    var soal = uji.soal[uji.ke];
+    if(!soal || soal.t !== 'klik'){ bukaInfo(idTempat); return; }
+    toastUji('Jawaban: ' + teksJawaban(soal, idTempat));
+    setTimeout(function(){ catatJawaban(idTempat); }, 260);
+  }
+
+  var jamToast = null;
+  function toastUji(teks){
+    var t = el('toastUji');
+    t.textContent = teks;
+    t.classList.add('tampil');
+    clearTimeout(jamToast);
+    jamToast = setTimeout(function(){ t.classList.remove('tampil'); }, 1100);
+  }
+
+  function hitungHasil(){
+    var benar = 0, rincian = [];
+    uji.soal.forEach(function(soal, i){
+      var jawab = uji.jawaban[i];
+      var kunci = kunciSoal(soal);
+      var betul = (soal.t === 'klik') ? (jawab === kunci) : (jawab !== undefined && jawab === kunci);
+      if(betul) benar++;
+      rincian.push({nomor:i + 1, soal:soal, jawab:jawab, kunci:kunci, benar:betul});
+    });
+    return {benar:benar, total:uji.soal.length, nilai:Math.round(benar / uji.soal.length * 100), rincian:rincian};
+  }
+
+  function tampilkanHasilUji(){
+    uji.selesai = true;
+    uji.aktif = false;
+    var h = hitungHasil();
+    var predikat = h.nilai >= 90 ? 'Sangat baik' : h.nilai >= 75 ? 'Baik' : h.nilai >= 60 ? 'Cukup' : 'Perlu belajar lagi';
+    var bintang = h.nilai >= 90 ? 3 : h.nilai >= 70 ? 2 : 1;
+    var bintangHtml = '';
+    for(var i=0;i<3;i++){
+      bintangHtml += '<svg width="36" height="36" viewBox="0 0 24 24" class="' + (i < bintang ? 'nyala' : '') + '"><path d="M12 2l3 6.6 7 .8-5.2 4.7 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.4l7-.8z" fill="#f7b520" stroke="#d99a10"/></svg>';
+    }
+    var rincianHtml = h.rincian.map(function(r){
+      var salahTeks = r.benar ? '' : '<span>Jawabanmu: ' + teksJawaban(r.soal, r.jawab) + ' · Benar: ' + teksJawaban(r.soal, r.kunci) + '</span>';
+      return '<div class="baris ' + (r.benar ? 'benar' : 'salah') + '"><div class="tanda">' + (r.benar ? '&#10003;' : '&#10007;') + '</div>' +
+             '<div class="isi"><b>' + r.nomor + '. ' + r.soal.q + '</b>' + salahTeks + '</div></div>';
+    }).join('');
+
+    var panel = el('panelUji');
+    panel.classList.add('tampil', 'lebar');
+    panel.innerHTML =
+      '<div id="ujiHasil">' +
+        '<div class="dari">' + (uji.nama ? 'Nama: ' + uji.nama : 'Hasil uji') + '</div>' +
+        '<div class="nilai">' + h.nilai + '</div>' +
+        '<div class="dari">Nilai 0-100 &middot; benar ' + h.benar + ' dari ' + h.total + ' soal</div>' +
+        '<div class="predikat">' + predikat + '</div>' +
+        '<div class="bintang">' + bintangHtml + '</div>' +
+      '</div>' +
+      '<div id="rincian">' + rincianHtml + '</div>' +
+      '<div id="ujiAksi">' +
+        '<button id="ujiUlang" type="button">Ulangi uji</button>' +
+        '<button id="ujiSalin" type="button">Salin hasil untuk guru</button>' +
+        '<button id="ujiTutup" type="button">Kembali ke peta</button>' +
+      '</div>';
+
+    el('ujiUlang').addEventListener('click', function(){ mulaiUji(uji.nama); });
+    el('ujiTutup').addEventListener('click', function(){ pindahMode('jelajah'); });
+    el('ujiSalin').addEventListener('click', function(){
+      var teks = 'Hasil uji peta 3D' + (uji.nama ? ' - ' + uji.nama : '') + '\n' +
+                 'Nilai: ' + h.nilai + ' (' + predikat + ') · benar ' + h.benar + ' dari ' + h.total + '\n\n' +
+                 h.rincian.map(function(r){
+                   return r.nomor + '. ' + (r.benar ? 'BENAR' : 'SALAH') + ' - ' + r.soal.q;
+                 }).join('\n');
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(teks).then(function(){ toastUji('Hasil disalin'); }, function(){ toastUji('Tidak bisa menyalin'); });
+      }else{
+        toastUji('Tidak bisa menyalin');
+      }
+    });
+    uji.hasil = h;
+  }
+
   window.__peta = {
     state:function(){
       return {bisa3D:bisa3D, jumlahTempat:TEMPAT.length, tampilNama:tampilNama,
@@ -760,7 +1191,28 @@ console.warn( 'Scripts "build/three.js" and "build/three.min.js" are deprecated 
       el('tombolNama').classList.toggle('aktif', tampilNama);
       el('tombolNama').setAttribute('aria-pressed', String(tampilNama));
     },
-    klikLayar:function(x, y){ klikLayar(x, y); }
+    klikLayar:function(x, y){ klikLayar(x, y); },
+    mode:function(m){ pindahMode(m); },
+    modeSekarang:function(){ return modeUji; },
+    mulaiUji:function(nama){ mulaiUji(nama); },
+    ujiState:function(){
+      return {aktif:uji.aktif, selesai:uji.selesai, ke:uji.ke, jumlah:uji.soal.length, nama:uji.nama,
+              mode:modeUji, jawaban:uji.jawaban.slice()};
+    },
+    ujiSoal:function(){
+      var s2 = uji.soal[uji.ke];
+      return s2 ? {t:s2.t, q:s2.q, target:s2.target || null} : null;
+    },
+    ujiKunci:function(){ var s2 = uji.soal[uji.ke]; return s2 ? kunciSoal(s2) : null; },
+    jawabUji:function(nilai){ jawabUji(nilai); },
+    klikUji:function(id){ jawabKlikUji(id); },
+    ujiHasilSekarang:function(){
+      if(!uji.selesai) return null;
+      var h = hitungHasil();
+      return {nilai:h.nilai, benar:h.benar, total:h.total,
+              rincian:h.rincian.map(function(r){ return {nomor:r.nomor, benar:r.benar}; })};
+    },
+    bankSoal:function(){ return BANK.length; }
   };
 
   function mulai(){
